@@ -1,0 +1,4 @@
+python-gitlab
+click
+structlog
+python-dotenv
