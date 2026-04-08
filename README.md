@@ -3,5 +3,9 @@ This is the Individual Practical Work of my Apprenticeship at SIX, that implemen
 
 
 python -m venv.venv
+
 source .venv/bin/activate
+
 pip install -r requirements.txt
+
+python -m src.main
