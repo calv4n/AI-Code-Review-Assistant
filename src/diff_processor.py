@@ -7,6 +7,10 @@ def process_diffs(raw_diffs: list) -> str:
     for diff in raw_diffs:
         file_path = diff.get('new_path')
         diff_content = diff.get('diff', '')
+
+        # Überspringe gelöschte Dateien oder Dateien ohne Diff
+        if diff.get('deleted_file') or not diff_content:
+            continue
             
         processed_text.append(f"--- Datei: {file_path} ---")
         processed_text.append(diff_content)
