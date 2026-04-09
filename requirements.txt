@@ -2,3 +2,6 @@ python-gitlab
 click
 structlog
 python-dotenv
+langchain
+langchain-ollama
+langchain-openai

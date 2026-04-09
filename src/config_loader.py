@@ -11,6 +11,10 @@ class Config:
     """
     gitlab_url: str
     gitlab_token: str
+    llm_provider: str
+    llm_model: str
+    llm_temperature: float
+    openrouter_api_key: str
 
 def get_config() -> Config:
     """
@@ -23,7 +27,12 @@ def get_config() -> Config:
     # Prüft ob beide Variablen vorhanden sind
     if not gitlab_url or not gitlab_token:
         raise ValueError("GITLAB_URL und GITLAB_TOKEN fehlen")
+    
     return Config(
         gitlab_url=gitlab_url,
-        gitlab_token=gitlab_token
+        gitlab_token=gitlab_token,
+        llm_provider=os.getenv("LLM_PROVIDER", "ollama").lower(),
+        llm_model=os.getenv("LLM_MODEL", "codellama"),
+        llm_temperature=float(os.getenv("LLM_TEMPERATURE", "0.1")),
+        openrouter_api_key=os.getenv("OPENROUTER_API_KEY", "")
     )
