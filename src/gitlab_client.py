@@ -16,4 +16,12 @@ class GitLabClient:
     def get_mr_diffs(self, project_id: str | int, mr_iid: int) -> list:
         project = self.gl.projects.get(project_id)
         mr = project.mergerequests.get(mr_iid)
+
         return mr.changes()['changes']
+    
+    def post_comment(self, project_id: str | int, mr_iid: int, comment: str):
+        project = self.gl.projects.get(project_id)
+        mr = project.mergerequests.get(mr_iid)
+        # -- Prefix für AI generiert
+        formatted_comment = f"**[AI-Review]**\n\n{comment}"
+        mr.notes.create({'body': formatted_comment})
