@@ -8,4 +8,4 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 
-python -m src.main
+python -m src.main review --project-id [PROJECT_ID] --mr-id [MR_ID] --dry-run

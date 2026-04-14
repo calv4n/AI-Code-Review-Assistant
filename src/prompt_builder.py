@@ -12,8 +12,8 @@ Analysiere die folgenden Code-Änderungen basierend auf diesen 6 Kategorien:
 5. Code Style (Namensgebung, Konventionen)
 6. Lesbarkeit (Komplexität)
 
-Formatiere dein Feedback zeilenbezogen (z.B. 'Datei X, Zeile Y: ...').
-Sei präzise und konstruktiv. Wenn der Code gut ist, erwähne das kurz."""
+Formatiere dein Feedback ZEILENBEZOGEN (z.B. 'Datei X, Zeile Y: ...').
+Sei einfach und präzise! Wenn der Code gut ist, erwähne das kurz."""
 
     user_prompt = """Merge Request Titel: {title}
 Autor: {author}
