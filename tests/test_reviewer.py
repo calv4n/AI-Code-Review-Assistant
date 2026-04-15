@@ -24,18 +24,18 @@ def mock_dependencies(monkeypatch, mock_mr_metadata, mock_raw_diff):
     
     return mock_client
 
-def test_t12_dry_run_mode(mock_dependencies):
+def test_t11_dry_run_mode(mock_dependencies):
     mock_client = mock_dependencies
     run_review(7757, 7, dry_run=True)
     assert not mock_client.post_comment.called
 
-def test_t13_end_to_end_workflow(mock_dependencies):
+def test_t12_end_to_end_workflow(mock_dependencies):
     mock_client = mock_dependencies
     run_review(7757, 7, dry_run=False)
     # Jetzt sollte es fehlerfrei durchlaufen!
     mock_client.post_comment.assert_called_once_with(7757, 7, "Hier ist dein KI Review!")
 
-def test_t10_fail_open_on_llm_error(mock_dependencies, monkeypatch):
+def test_t09_fail_error(mock_dependencies, monkeypatch):
     mock_client = mock_dependencies
     # Überschreibe das LLM mit dem Fehler-Modell
     monkeypatch.setattr("src.reviewer.get_llm", lambda x: error_chat_model)
