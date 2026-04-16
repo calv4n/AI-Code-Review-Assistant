@@ -6,3 +6,4 @@ langchain
 langchain-ollama
 langchain-openai
 pytest
+pytest-cov
