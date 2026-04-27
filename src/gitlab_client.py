@@ -21,4 +21,4 @@ class GitLabClient:
     def post_comment(self, project_id: str | int, mr_iid: int, comment: str):
         project = self.gl.projects.get(project_id)
         mr = project.mergerequests.get(mr_iid)
-        mr.notes.create({'body': formatted_comment})
+        mr.notes.create({'body': comment})
