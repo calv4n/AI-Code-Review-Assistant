@@ -15,6 +15,7 @@ class Config:
     llm_model: str
     llm_temperature: float
     openrouter_api_key: str
+    use_litellm: bool
 
 def get_config() -> Config:
     """
@@ -34,5 +35,6 @@ def get_config() -> Config:
         llm_provider=os.getenv("LLM_PROVIDER", "ollama").lower(),
         llm_model=os.getenv("LLM_MODEL", "codellama"),
         llm_temperature=float(os.getenv("LLM_TEMPERATURE", "0.1")),
-        openrouter_api_key=os.getenv("OPENROUTER_API_KEY", "")
+        openrouter_api_key=os.getenv("OPENROUTER_API_KEY", ""),
+        use_litellm = os.getenv("USE_LITELLM", "false").lower() in ("true", "1", "yes"),
     )
