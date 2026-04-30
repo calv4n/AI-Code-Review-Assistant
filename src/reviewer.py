@@ -44,6 +44,9 @@ def run_review(project_id: int, mr_id: int, dry_run: bool = False):
         })
 
         review_result = response.content
+        # -- Prefix für AI generiert
+        tagged_result = f"**[AI-Review by {config.llm_provider}/{config.llm_model} with temperature {config.llm_temperature}]**\n\n{review_result}"
+
     
         # ---- 4 Kommentar posten oder in die Konsole ausgeben
 
@@ -51,9 +54,9 @@ def run_review(project_id: int, mr_id: int, dry_run: bool = False):
             print("\n" + "="*50)
             print("DRY-RUN ERGEBNIS (Wird nicht gepostet):")
             print("="*50)
-            print(review_result)
+            print(tagged_result)
         else:
-            client.post_comment(project_id, mr_id, review_result)
+            client.post_comment(project_id, mr_id, tagged_result)
             logger.info("Review-Kommentar erfolgreich gepostet.", **log_context)
 
         # Erfolgs Logging
